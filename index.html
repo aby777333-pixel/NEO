@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FXAB — Precision trading meets technology</title>
+  <meta name="description" content="FXAB is a global Forex & CFD brokerage (est. 2012). Precision execution, transparent conditions, premium minimalist design." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <!-- deps (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js" defer></script>
+</head>
+<body>
+  <div id="sharedTicker"></div>
+  <div id="sharedHeader"></div>
+
+  <main>
+    <section class="hero">
+      <div id="particles" aria-hidden="true"></div>
+
+      <!-- liquid blobs -->
+      <svg class="blob b1" viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <filter id="blobF1">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7">
+              <animate attributeName="baseFrequency" dur="11s" values="0.012;0.020;0.012" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="50" />
+          </filter>
+          <radialGradient id="blobG1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(360 240) rotate(90) scale(250 320)">
+            <stop stop-color="#00E5FF" stop-opacity=".40"/>
+            <stop offset="1" stop-color="#1E293B" stop-opacity=".06"/>
+          </radialGradient>
+        </defs>
+        <path filter="url(#blobF1)" d="M518.7 87.6C591.2 129.7 649.2 205.5 653.8 287.6C658.5 369.8 609.8 458.4 535.5 490.1C461.1 521.8 361.1 496.6 276.9 454.2C192.7 411.8 124.4 352.2 93.6 276.2C62.8 200.1 69.6 107.7 126.7 63.6C183.8 19.5 291.3 23.8 375.7 40.4C460.1 57 511.1 45.5 518.7 87.6Z" fill="url(#blobG1)" />
+      </svg>
+      <svg class="blob b2" viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <filter id="blobF2">
+            <feTurbulence type="fractalNoise" baseFrequency="0.010" numOctaves="2" seed="4">
+              <animate attributeName="baseFrequency" dur="13s" values="0.010;0.017;0.010" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="56" />
+          </filter>
+          <radialGradient id="blobG2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(340 270) rotate(90) scale(280 360)">
+            <stop stop-color="#00D9A3" stop-opacity=".28"/>
+            <stop offset="1" stop-color="#00E5FF" stop-opacity=".08"/>
+          </radialGradient>
+        </defs>
+        <path filter="url(#blobF2)" d="M586.6 146.8C639.5 205.4 654.6 294.2 624.4 365.6C594.1 437 518.4 491 435.1 501.3C351.7 511.5 260.9 478 193.8 419.6C126.8 361.2 83.5 277.9 96.9 200.1C110.3 122.3 180.5 50 268.6 34.1C356.7 18.1 462.7 58.6 533.9 92.6C605.1 126.6 533.7 88.2 586.6 146.8Z" fill="url(#blobG2)" />
+      </svg>
+
+      <div class="container heroInner">
+        <div>
+          <div class="kicker"><span class="kdot"></span> FXAB • Est. 2012 • Forex & CFDs</div>
+          <h1 data-i18n="headline">Trade global markets with precision.</h1>
+          <p class="lead" data-i18n="sub">Execution-led infrastructure. Transparent conditions. Swiss-clean design.</p>
+
+          <div class="bullets">
+            <div class="bullet" data-reveal><div class="check"></div><div><b>9.8ms</b> execution target (demo) — co‑located routing</div></div>
+            <div class="bullet" data-reveal><div class="check"></div><div><b>0.0</b> spreads from on majors (demo) — clear pricing display</div></div>
+            <div class="bullet" data-reveal><div class="check"></div><div><b>24/5</b> support (demo) — fast response SLAs</div></div>
+            <div class="bullet" data-reveal><div class="check"></div><div><b>Risk-first</b> tooling — stops, limits, margin clarity</div></div>
+          </div>
+
+          <div class="ctaRow">
+            <a class="btn primary" href="#" onclick="return false">Open Account</a>
+            <a class="btn ghost" href="#" onclick="return false">Try Demo</a>
+            <a class="btn" href="/introducing-brokers.html">Become an IB</a>
+          </div>
+
+          <div class="trustRow">
+            <span class="badge">Regulated (demo)</span>
+            <span class="badge">Segregated funds (demo)</span>
+            <span class="badge">4.8/5 reviews (demo)</span>
+            <span class="badge">100,000+ traders (demo)</span>
+          </div>
+
+          <div class="liveHeader" style="margin-top:18px">
+            <div style="font-weight:800; letter-spacing:.02em">Live Market Pulse</div>
+            <div style="display:flex; gap:10px; align-items:center; color: rgba(30,41,59,.70); font-size:12.5px">
+              <span class="liveDot" data-live-dot aria-hidden="true"></span>
+              <span>LIVE (simulated WebSocket)</span>
+            </div>
+          </div>
+
+          <div class="liveGrid">
+            ${fx('EURUSD','🇪🇺','🇺🇸','EUR/USD')}
+            ${fx('GBPUSD','🇬🇧','🇺🇸','GBP/USD')}
+            ${fx('USDJPY','🇺🇸','🇯🇵','USD/JPY')}
+            ${fx('XAUUSD','🟡','🇺🇸','XAU/USD')}
+            ${fx('AUDUSD','🇦🇺','🇺🇸','AUD/USD')}
+            ${fx('USDCAD','🇺🇸','🇨🇦','USD/CAD')}
+            ${fx('BTCUSD','₿','🇺🇸','BTC/USD')}
+            ${fx('ETHUSD','◇','🇺🇸','ETH/USD')}
+          </div>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+            <button class="pill" data-lang="en">EN</button>
+            <button class="pill" data-lang="es">ES</button>
+            <button class="pill" data-lang="fr">FR</button>
+            <button class="pill" data-lang="de">DE</button>
+            <button class="pill" data-lang="ar">AR (RTL)</button>
+            <button class="pill" data-lang="hi">HI</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="globeCard" data-reveal>
+            <div class="top">
+              <span>Global activity map</span>
+              <span style="opacity:.82">pulses + arcs (demo)</span>
+            </div>
+            <div class="globeWrap">
+              <canvas id="globe"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        function fx(id,a,b,label){
+          return `
+          <div class="fxCard holo" data-tilt data-pair="${id}">
+            <div class="fxTop">
+              <div class="flags">${a}<span class="sep"></span>${b} <span class="pair">${label}</span></div>
+              <div class="chg" data-chg>▲ 0.00%</div>
+            </div>
+            <div class="price" data-price>—</div>
+            <canvas class="spark"></canvas>
+            <div style="margin-top:10px; display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:12px; color: rgba(100,116,139,.92)">
+              <span>Bid/Ask • spread</span>
+              <a class="btn" style="padding:8px 10px" href="/forex.html">Trade</a>
+            </div>
+          </div>`;
+        }
+      </script>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="sectionHead">
+          <div>
+            <h2>Trust builders</h2>
+            <p>Concrete claims, not hype. Replace demo numbers with audited metrics and regulatory details.</p>
+          </div>
+        </div>
+        <div class="grid4">
+          <div class="card" data-reveal><h3>🛡️ Regulation & security</h3><p>Clear licensing, segregated funds, and negative balance protection (demo).</p></div>
+          <div class="card" data-reveal><h3>⚡ Execution discipline</h3><p>Low-latency targets, monitoring, and failover design (demo).</p></div>
+          <div class="card" data-reveal><h3>💰 Transparent costs</h3><p>Show spreads + fees upfront. No surprise pricing behavior.</p></div>
+          <div class="card" data-reveal><h3>🤖 Algo ready</h3><p>FIX/API positioning, VPS hosting, and clear policy on restrictions.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="sectionHead">
+          <div>
+            <h2>Trading terminal mock</h2>
+            <p>Realistic candlesticks + simulated order book. Extend with timeframes, indicators, and TradingView integration.</p>
+          </div>
+          <a class="btn" href="/platforms.html">Explore platform →</a>
+        </div>
+
+        <div class="terminal" data-reveal>
+          <div class="bar">
+            <span>FXAB Raptor • EUR/USD • 15m</span>
+            <span style="opacity:.82">ws ok • latency 9–12ms (demo)</span>
+          </div>
+          <div class="body">
+            <div class="pane"><canvas id="termChart"></canvas></div>
+            <div class="pane"><canvas id="termDepth"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container" style="text-align:center">
+        <h2 style="font-family:Space Grotesk; font-size: clamp(2rem, 5vw, 3.2rem); margin:0">Your account in minutes.</h2>
+        <p style="margin:12px auto 0; max-width: 78ch; color: rgba(30,41,59,.76); line-height:1.85">3-step onboarding, inline validation, and a clean UX. No fake scarcity.</p>
+        <div class="ctaRow" style="justify-content:center; margin-top:16px">
+          <a class="btn primary" href="/accounts.html">View accounts</a>
+          <a class="btn ghost" href="#" onclick="return false">Try demo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="sharedFooter"></div>
+
+  <script src="/assets/partials.js"></script>
+  <script>window.FXAB && FXAB.inject();</script>
+  <script src="/assets/globe.js" defer></script>
+  <script src="/assets/app.js" defer></script>
+  <script>
+    window.addEventListener('load', () => {
+      window.FXAB_GLOBE && FXAB_GLOBE();
+    });
+  </script>
+</body>
+</html>
