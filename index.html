@@ -91,16 +91,7 @@
             </div>
           </div>
 
-          <div class="liveGrid">
-            ${fx('EURUSD','🇪🇺','🇺🇸','EUR/USD')}
-            ${fx('GBPUSD','🇬🇧','🇺🇸','GBP/USD')}
-            ${fx('USDJPY','🇺🇸','🇯🇵','USD/JPY')}
-            ${fx('XAUUSD','🟡','🇺🇸','XAU/USD')}
-            ${fx('AUDUSD','🇦🇺','🇺🇸','AUD/USD')}
-            ${fx('USDCAD','🇺🇸','🇨🇦','USD/CAD')}
-            ${fx('BTCUSD','₿','🇺🇸','BTC/USD')}
-            ${fx('ETHUSD','◇','🇺🇸','ETH/USD')}
-          </div>
+          <div class="liveGrid" id="liveGrid"></div>
 
           <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
             <button class="pill" data-lang="en">EN</button>
@@ -126,21 +117,37 @@
       </div>
 
       <script>
-        function fx(id,a,b,label){
-          return `
-          <div class="fxCard holo" data-tilt data-pair="${id}">
-            <div class="fxTop">
-              <div class="flags">${a}<span class="sep"></span>${b} <span class="pair">${label}</span></div>
-              <div class="chg" data-chg>▲ 0.00%</div>
+        // Build live cards client-side (static hosting friendly)
+        (function(){
+          const grid = document.getElementById('liveGrid');
+          if(!grid) return;
+
+          const cards = [
+            { id:'EURUSD', a:'🇪🇺', b:'🇺🇸', label:'EUR/USD' },
+            { id:'GBPUSD', a:'🇬🇧', b:'🇺🇸', label:'GBP/USD' },
+            { id:'USDJPY', a:'🇺🇸', b:'🇯🇵', label:'USD/JPY' },
+            { id:'XAUUSD', a:'🟡', b:'🇺🇸', label:'XAU/USD' },
+            { id:'AUDUSD', a:'🇦🇺', b:'🇺🇸', label:'AUD/USD' },
+            { id:'USDCAD', a:'🇺🇸', b:'🇨🇦', label:'USD/CAD' },
+            { id:'BTCUSD', a:'₿', b:'🇺🇸', label:'BTC/USD' },
+            { id:'ETHUSD', a:'◇', b:'🇺🇸', label:'ETH/USD' },
+          ];
+
+          grid.innerHTML = cards.map(c => `
+            <div class="fxCard holo" data-tilt data-pair="${c.id}">
+              <div class="fxTop">
+                <div class="flags">${c.a}<span class="sep"></span>${c.b} <span class="pair">${c.label}</span></div>
+                <div class="chg" data-chg>▲ 0.00%</div>
+              </div>
+              <div class="price" data-price>—</div>
+              <canvas class="spark"></canvas>
+              <div style="margin-top:10px; display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:12px; color: rgba(100,116,139,.92)">
+                <span>Bid/Ask • spread</span>
+                <a class="btn" style="padding:8px 10px" href="/forex.html">Trade</a>
+              </div>
             </div>
-            <div class="price" data-price>—</div>
-            <canvas class="spark"></canvas>
-            <div style="margin-top:10px; display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:12px; color: rgba(100,116,139,.92)">
-              <span>Bid/Ask • spread</span>
-              <a class="btn" style="padding:8px 10px" href="/forex.html">Trade</a>
-            </div>
-          </div>`;
-        }
+          `).join('');
+        })();
       </script>
     </section>
 
